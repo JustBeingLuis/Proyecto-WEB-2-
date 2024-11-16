@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extrahead %} 
+<title>Detalle Producto</title>
+{% endblock extrahead%}
+
+{% block content %}
+<div class="card mb-3 mx-auto" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ bleachCharacter.image.url }}" class="img-fluid rounded-start" alt="{{ bleachCharacter.name }}">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ bleachCharacter.name }}</h5>
+                <p class="card-text">Genre: {{ bleachCharacter.genre }}</p>
+                <p class="card-text">Height: {{ bleachCharacter.height }} cm</p>
+                <p class="card-text">Weight: {{ bleachCharacter.weight }} kg</p>
+                <a href="{% url 'index' %}" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

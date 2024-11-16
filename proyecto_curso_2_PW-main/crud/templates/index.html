@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extrahead %} 
+<title>Inicio</title>
+{% endblock extrahead%}
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for bleachCharacter in Bleach_Characters %}
+    <div class="col">
+        <div class="card h-100">
+            {% if bleachCharacter.image %}
+            <img src="{{ bleachCharacter.image.url }}" class="card-img-top fixed-size-img" alt="{{ bleachCharacter.name }}">
+            {% else %}
+            <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top fixed-size-img" alt="Placeholder">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title" style="color: #FF4500;">{{ bleachCharacter.name }}</h5>
+                <p class="card-text">Genre: {{ bleachCharacter.genre }}</p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{% url 'bleachCharacterDetail' bleachCharacter.id %}" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
